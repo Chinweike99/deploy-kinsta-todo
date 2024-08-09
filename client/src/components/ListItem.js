@@ -1,11 +1,10 @@
-function ListItem() {
+function ListItem({task}) {
     return (
       <div>
-        Hello
+        <p>{task.title} {task.progress} {task.date}</p>
       </div>
     );
   }
-  
   
   export default ListItem;
   
