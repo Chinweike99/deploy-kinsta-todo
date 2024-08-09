@@ -1,7 +1,9 @@
+import ListHeader from "./components/ListHeader";
+
 function App() {
   return (
     <div className="App">
-      Hello
+      <ListHeader listName={'🖥️A TodoList for the Festivity🪙...'} />
     </div>
   );
 }

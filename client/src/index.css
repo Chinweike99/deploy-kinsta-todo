@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.App{
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0,0,0, 0.05) 0 6px 24px, rgba(0,0,0, 0.08) 0 0 0 1px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    width: 800px;
+    margin: 50px 20px;
+}
+
+/* LIST HEADER */
+.list-header{
+    width: 100;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: rgba(0,0,0, 0.1) 1px solid;
+    border-bottom-width: 5px;
+}
+.button-container{
+    display: flex;
+    align-items: center;
+}
+.button-container button{
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-function Auth() {
+function Modal() {
     return (
       <div>
         Hello
@@ -6,6 +6,5 @@ function Auth() {
     );
   }
   
-  
-  export default Auth;
+  export default Modal;
   

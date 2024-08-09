@@ -1,4 +1,4 @@
-function Auth() {
+function ProgressBar() {
     return (
       <div>
         Hello
@@ -7,5 +7,5 @@ function Auth() {
   }
   
   
-  export default Auth;
+  export default ProgressBar;
   
