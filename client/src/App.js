@@ -16,7 +16,7 @@ function App() {
       console.error(error);
     }
   }
-
+  
   useEffect(() => {
     getData();
   }, []);

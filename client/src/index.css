@@ -39,6 +39,34 @@ body{
     font-weight: 600;
     cursor: pointer;
 }
+.create{
+    border: 1.5px solid rgb(108, 115, 148);
+    color: rgb(108, 115, 148);
+    text-transform: uppercase;
+}
+.create:hover{
+    background-color: rgb(18, 20, 30);
+    color: #fff;
+}
+.create:active{
+    background-color: rgb(108, 115, 148);
+    color: rgb(255, 255, 255);
+}
+.log-out{
+    border: 1.5px solid rgb(108, 115, 148) ;
+    background-color: rgb(20, 30, 31) !important;
+    color: rgb(108, 115, 148);
+    text-transform: uppercase;
+}
+.log-out:hover{
+    background-color: rgb(18, 20, 30);
+    color: #fff;
+}
+.log-out:active{
+    background-color: rgb(108, 115, 148);
+    color: rgb(255, 255, 255);
+}
+
 
 
 /* LIST ITEM */
@@ -49,4 +77,39 @@ body{
     box-shadow: rgba(0,0,0,0.08) 0 0 0 1px;
     display: flex;
     justify-content: space-between;
+}
+.edit{
+    border: 1.5px solid rgb(141, 181, 145);
+    color: rgb(10, 76, 7);
+    background-color: transparent;
+    text-transform: uppercase;
+}
+.edit:hover{
+    border: 1.5px solid rgb(10, 76, 7);
+    color: rgb(141, 181, 145);
+    background-color: rgb(10, 76, 7);
+    text-transform: uppercase;
+}
+.edit:active{
+    border: 1.5px solid rgb(141, 181, 145);
+    color: rgb(255, 255, 255);
+    background-color: rgb(141, 181, 145);
+}
+
+.delete{
+    border: 1.5px solid rgb(141, 181, 145);
+    color: rgb(197, 10, 10);
+    background-color: transparent;
+    text-transform: uppercase;
+}
+.delete:hover{
+    border: 1.5px solid rgb(184, 7, 7);
+    color: rgb(141, 181, 145);
+    background-color: rgb(184, 7, 7);
+    text-transform: uppercase;
+}
+.delete:active{
+    border: 1.5px solid rgb(141, 181, 145);
+    color: rgb(255, 255, 255);
+    background-color: rgb(141, 181, 145);
 }

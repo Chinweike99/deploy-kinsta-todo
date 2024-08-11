@@ -11,7 +11,7 @@ function ListItem({task}) {
         </div>
         <div className='button-container'>
           <button className='edit'>EDIT</button>
-          <button className='deletes'>DELETE</button>
+          <button className='delete'>DELETE</button>
         </div>
       </li>
     );
