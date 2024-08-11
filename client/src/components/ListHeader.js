@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from './Modal'
 
 function ListHeader(props) {
+  const [showModal, setShowModal] = useState(false);
 
-    const createNew = () => {
-        alert('sign out')
-    }
-    const logOut = () => {
-        alert('sign out')
-    }
-
+  
     return (
       <div className='list-header'>
         <h1>{props.listName}</h1>
         <div className='button-container'>
-            <button className='create' onClick={createNew}>CREATE NEW</button>
-            <button className='log-out' onClick={logOut}>LOG OUT</button>
+            <button className='create' onClick={()=>setShowModal(true)}>CREATE NEW</button>
+            <button className='log-out' >LOG OUT</button>
         </div>
+        {showModal && <Modal mode={'create'} setShowModal={setShowModal}/>}
       </div>
     );
   }
