@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ListHeader from "./components/ListHeader";
 import ListItem from "./components/ListItem"
+import Auth from "./components/Auth";
 
 function App() {
   const userEmail = "innocent@testgmail.com";
@@ -8,10 +9,12 @@ function App() {
 
   // ${process.env.REACT_APP_SEVERURL}
 
+// AUTH
+  const authToken = false
+
   const getData = async () =>{
     try {
         const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
-        // console.log(response.json());
         const json = await response.json();
         setTasks(json);  
     } catch (error) {
@@ -30,8 +33,12 @@ function App() {
 
   return (
     <div className="App">
+      {!authToken && <Auth />}
+      {authToken && 
+      <>
       <ListHeader listName={'🖥️A TodoList for the Festivity🪙... '} getData={getData}/>
       {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData}/>)}
+      </>}
     </div>
   );
 }
