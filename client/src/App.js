@@ -6,6 +6,8 @@ function App() {
   const userEmail = "innocent@testgmail.com";
   const [tasks, setTasks] = useState(null);
 
+  // ${process.env.REACT_APP_SEVERURL}
+
   const getData = async () =>{
     try {
         const response = await fetch(`http://localhost:8000/todos/${userEmail}`);

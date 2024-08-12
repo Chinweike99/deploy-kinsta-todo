@@ -43,6 +43,17 @@ app.put('/todos/:id', async(req, res) => {
     }
 })
 
+// DELETE TODO
+app.delete('/todos/:id', async(req, res) =>{
+    const { id } = req.params;
+    try {
+        const deleteTodo = await db.query("DELETE FROM todos WHERE id = $1;", [id]);
+        res.json(deleteTodo);
+    } catch (error) {
+        console.error(error)
+    }
+})
+
 
 app.listen(PORT, ()=>{
     console.log(`LISTENING TO PORT http://localhost:${PORT}`)

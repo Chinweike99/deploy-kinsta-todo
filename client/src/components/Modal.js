@@ -8,7 +8,7 @@ function Modal({mode, setShowModal, getData, task}) {
   const [data, setData] = useState({
     user_email: editMode ? task.user_email : "innocent@testgmail.com",
     title: editMode ? task.title : null,
-    progress: editMode ? task.title : "50",
+    progress: editMode ? task.progress : "50",
     date: editMode ? task.date : new Date()
   })
   const handleChange = (e) => {
@@ -36,6 +36,7 @@ function Modal({mode, setShowModal, getData, task}) {
             setShowModal(false);
             getData();
           }
+          console.log(response)
     } catch (error) {
       console.error(error.message);
     }
@@ -45,7 +46,7 @@ function Modal({mode, setShowModal, getData, task}) {
   const editData = async(e) =>{
     e.preventDefault();
     try {
-        const response = await fetch(`http://localhost:8000/todos/${task.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_SEVERURL}/todos/${task.id}`, {
         method: "PUT",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(data)
