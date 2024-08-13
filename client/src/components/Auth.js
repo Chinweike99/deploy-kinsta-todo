@@ -23,21 +23,25 @@ console.log(cookies)
       setError("Error, password does not match")
       return
     }
-      const response = await fetch(`${process.env.REACT_APP_SEVERURL}/${endpoint}`,{
-      method: "POST",
-      headers: { "Content-Type" : "application/json"},
-      body: JSON.stringify({email, password})
-    });
-    const data = response.json();
-
-    if(data.detail){
-      setError(data.detail);
-    }else{
-      setCookie('Email', data.email)
-      setCookie('AuthToken', data.token);
-
-      window.location.reload();
-    }
+      try {
+        const response = await fetch(`${process.env.REACT_APP_SEVERURL}/${endpoint}`,{
+          method: "POST",
+          headers: { "Content-Type" : "application/json"},
+          body: JSON.stringify({email, password})
+        });
+        const data = await response.json();
+    
+        if(data.detail){
+          setError(data.detail);
+        }else{
+          setCookie('Email', data.email)
+          setCookie('AuthToken', data.token);
+    
+          window.location.reload();
+        }
+      } catch (error) {
+        setError("Failed to connect to server. Please try again.");
+      }
   }
 
 
@@ -59,7 +63,7 @@ console.log(cookies)
               <input type="submit" className="create" onClick={(e) => handleSubmit(e, isLogin ? "login" : "signup")}/>
               {error && <p>{error}</p>}
             </form>
-            
+
             <div className="auth-option">
               <button onClick={() => viewLogin(false)} style={{backgroundColor : !isLogin ? "white" : "rgb(74, 165, 135)", color: !isLogin ? "#333" : "white"}}>Sign Up</button>
               <button onClick={() => viewLogin(true)} style={{backgroundColor : isLogin ? "white" : "rgb(74, 165, 135)", color: !isLogin ? "white" : "#333"}}>Login</button>

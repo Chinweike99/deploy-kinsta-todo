@@ -16,7 +16,7 @@ function Modal({mode, setShowModal, getData, task}) {
   const postData = async (e) => {
     e.preventDefault();
     try {
-          const response = await fetch("http://localhost:8000/todos", {
+          const response = await fetch("${process.env.REACT_APP_SEVERURL}/todos", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify(data)
@@ -71,9 +71,11 @@ function Modal({mode, setShowModal, getData, task}) {
           </div>
 
           <form>
-            <input maxLength={60} placeholder=" Enter task" name="title" value={data.title} required onChange={handleChange}/><br/>
+            <input maxLength={60} placeholder=" Enter task" name="title" value={data.title} required onChange={handleChange}
+            /><br/>
             <label for="range">Drag to select your current progress ... {data.progress}%</label>
-            <input id="range" required type="range" min="0" ma="100" name="progress" value={data.progress} onChange={handleChange}/>
+            <input id="range" required type="range" min="0" max="100" name="progress" value={data.progress} onChange={handleChange}
+            />
             <input className={mode} type="submit" onClick={editMode ? editData : postData}/>
           </form>
 

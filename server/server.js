@@ -1,3 +1,4 @@
+const PORT = process.env.PORT ?? 8000;
 const express = require('express');
 const app = express();
 const db = require('./db');
@@ -8,13 +9,11 @@ const jwt = require('jsonwebtoken');
 
 app.use(cors());
 app.use(express.json())
-const PORT = process.env.PORT ?? 8000;
 
 // GET ALL TODOs
 app.get('/todos/:userEmail', async (req, res) => {
     
     const { userEmail } = req.params;
-    console.log(userEmail);
     try {
         const response = await db.query("SELECT * FROM todos WHERE user_email = $1", [userEmail]);
         res.json(response.rows)
@@ -23,9 +22,10 @@ app.get('/todos/:userEmail', async (req, res) => {
     }
 })
 
+// CREATE NEW TODO
 app.post('/todos', async(req, res) =>{
     const { user_email, title, progress, date } = req.body;
-    console.log(user_email, title, progress, date)
+
     try {
         const response = await db.query(`INSERT INTO todos(user_email, title, progress, date) VALUES ($1, $2, $3, $4)`, [user_email, title, progress, date]);
         res.json(response);
@@ -80,7 +80,7 @@ app.post('/login', async(req, res) => {
     const {email, password} = req.body;
     try {
         const users = await db.query("SELECT * FROM users WHERE email = $1", [email]);
-        if(!users.rows.length) return res.json({detail: "User not found, Create user"});
+        if(!users.rows.length) return res.json({detail: "User not found, Sign up "});
         const success = await bcrypt.compare(password, users.rows[0].h_password)
         const token = jwt.sign({email}, 'secret', {expiresIn: "1hr"})
 
@@ -91,11 +91,9 @@ app.post('/login', async(req, res) => {
         }
 
     } catch (error) {
-        console.error(error.message)
+        console.error(error)
     }
 })
-
-
 
 app.listen(PORT, ()=>{
     console.log(`LISTENING TO PORT http://localhost:${PORT}`)

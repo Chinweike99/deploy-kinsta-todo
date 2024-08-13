@@ -8,7 +8,7 @@ function ListItem({task, getData}) {
 
   const deleteTodo = async () => {
     try {
-      const delTodo = await fetch(`http://localhost:8000/todos/${task.id}`,{
+      const delTodo = await fetch(`${process.env.REACT_APP_SEVERURL}/todos/${task.id}`,{
         method: "DELETE"
       })
       if (delTodo.status === 200){
@@ -23,7 +23,7 @@ function ListItem({task, getData}) {
       <li className="list-item">
         <div className='info-container'>
           <TickIcon />
-          <p className="task-title">{task.title} {task.date}</p>
+          <p className="task-title"><span>{task.title}  || </span>{task.date}</p>
           <ProgressBar progress={task.progress}/>
         </div>
 

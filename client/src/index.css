@@ -43,6 +43,7 @@ body{
     border: 1.5px solid rgb(108, 115, 148);
     color: rgb(108, 115, 148);
     text-transform: uppercase;
+    transition: all 0.5s ease-out
 }
 .create:hover{
     background-color: rgb(18, 20, 30);
@@ -54,26 +55,23 @@ body{
 }
 .log-out{
     border: 1.5px solid rgb(108, 115, 148) ;
-    background-color: rgb(20, 30, 31) !important;
-    color: rgb(108, 115, 148);
+    background: rgb(5, 11, 12);
+    color: rgb(7, 8, 8);
     text-transform: uppercase;
+    transition: all 0.5s ease-out
 }
 .log-out:hover{
-    background-color: rgb(18, 20, 30);
-    color: #fff;
-}
-.log-out:active{
-    background-color: rgb(108, 115, 148);
-    color: rgb(255, 255, 255);
+    background-color: rgb(175, 17, 67);
+    color: #eceef1;
 }
 .copy-right{
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 10px;
     color: rgb(114, 114, 114);
 }
 .user-email{
     float: right;
-    font-size: 13px;
+    font-size: 17px;
     margin-top: 10px;
     color: rgb(114, 114, 114);
 }
@@ -88,12 +86,14 @@ body{
     box-shadow: rgba(0,0,0,0.08) 0 0 0 1px;
     display: flex;
     justify-content: space-between;
+    background: rgb(221, 245, 252);
 }
 .edit{
     border: 1.5px solid rgb(141, 181, 145);
     color: rgb(10, 76, 7);
     background-color: transparent;
     text-transform: uppercase;
+    transition: all 0.5s ease-out
 }
 .edit:hover{
     border: 1.5px solid rgb(10, 76, 7);
@@ -112,6 +112,7 @@ body{
     color: rgb(197, 10, 10);
     background-color: transparent;
     text-transform: uppercase;
+    transition: all 0.5s ease-out
 }
 .delete:hover{
     border: 1.5px solid rgb(184, 7, 7);
@@ -125,7 +126,11 @@ body{
     background-color: rgb(141, 181, 145);
 }
 .task-title{
-    width: 300px;
+    width: 450px;
+}
+.task-title span{
+    font-size: 20px;
+    margin: 0 10px;
 }
 
 
@@ -141,6 +146,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0, 0.5);
+    transition: all 0.5s ease-out;
 }
 
 .modal{
