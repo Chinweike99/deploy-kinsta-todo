@@ -16,7 +16,7 @@ function Modal({mode, setShowModal, getData, task}) {
   const postData = async (e) => {
     e.preventDefault();
     try {
-          const response = await fetch("${process.env.REACT_APP_SEVERURL}/todos", {
+          const response = await fetch(`${process.env.REACT_APP_SEVERURL}/todos`, {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify(data)

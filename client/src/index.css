@@ -1,25 +1,26 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: aliceblue;
+    background-color: rgb(246, 249, 252);
     display: flex;
     justify-content: center;
     font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 
 .App{
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0,0,0, 0.05) 0 6px 24px, rgba(0,0,0, 0.08) 0 0 0 1px;
+    background-color: rgb(63, 16, 16);
+    box-shadow: rgba(0,0,0, 3) 0 6px 24px, rgba(0,0,0, 0.3) 0 0 0 1px;
     border-radius: 10px;
     padding: 10px;
-    /* display: flex; */
-    width: 900px;
+    color: #fff;
+    /* display: flex;
+    flex-direction: column; */
+    /* width: 900px; */
     margin-top: 50px;
 }
 
 /* LIST HEADER */
 .list-header{
-    width: 100%;
     display: flex;
     justify-content: space-between;
     border-bottom: rgba(0,0,0, 0.1) 1px solid;
@@ -41,8 +42,9 @@ body{
 }
 .create{
     border: 1.5px solid rgb(108, 115, 148);
-    color: rgb(108, 115, 148);
+    color: rgb(226, 227, 233);
     text-transform: uppercase;
+    font-weight: 900;
     transition: all 0.5s ease-out
 }
 .create:hover{
@@ -56,24 +58,25 @@ body{
 .log-out{
     border: 1.5px solid rgb(108, 115, 148) ;
     background: rgb(5, 11, 12);
-    color: rgb(7, 8, 8);
+    color: rgb(216, 229, 229);
     text-transform: uppercase;
+    font-weight: 900;
     transition: all 0.5s ease-out
 }
 .log-out:hover{
     background-color: rgb(175, 17, 67);
-    color: #eceef1;
+    color: #080808;
 }
 .copy-right{
     font-size: 15px;
     margin-top: 10px;
-    color: rgb(114, 114, 114);
+    color: rgb(244, 232, 232);
 }
 .user-email{
     float: right;
     font-size: 17px;
     margin-top: 10px;
-    color: rgb(114, 114, 114);
+    color: rgb(228, 218, 218);
 }
 
 
@@ -127,6 +130,7 @@ body{
 }
 .task-title{
     width: 450px;
+    color: #333;
 }
 .task-title span{
     font-size: 20px;
@@ -145,6 +149,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #0c0c0c;
     background-color: rgba(0,0,0, 0.5);
     transition: all 0.5s ease-out;
 }
