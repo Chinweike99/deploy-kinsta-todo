@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.use(cors());
 app.use(express.json())
@@ -56,16 +58,25 @@ app.delete('/todos/:id', async(req, res) =>{
 
 // SIGN UP
 app.post('/signup', async(req, res) => {
+    const {email, password} = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPwd = bcrypt.hashSync(password, salt)
     try {
-        
+        const signUp = await db.query("INSERT INTO users (email, h_password) VALUES($1, $2)", [email, hashedPwd]);
+        const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'});
+        res.json({email, token});
     } catch (error) {
-        console.error(error.message)
+        console.error(error);
+        if(error){
+            res.json({detail: error.detail})
+        }
     }
 })
 
 
 // LOGIN
 app.post('/login', async(req, res) => {
+    const {email, password} = req.body;
     try {
         
     } catch (error) {
