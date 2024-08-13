@@ -52,6 +52,25 @@ app.delete('/todos/:id', async(req, res) =>{
     } catch (error) {
         console.error(error)
     }
+});
+
+// SIGN UP
+app.post('/signup', async(req, res) => {
+    try {
+        
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+
+// LOGIN
+app.post('/login', async(req, res) => {
+    try {
+        
+    } catch (error) {
+        console.error(error.message)
+    }
 })
 
 
