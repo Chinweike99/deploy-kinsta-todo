@@ -12,7 +12,6 @@ function ListItem({task, getData}) {
         method: "DELETE"
       })
       if (delTodo.status === 200){
-        setShowModal(false);
         getData();
       }
     } catch (error) {
@@ -24,15 +23,15 @@ function ListItem({task, getData}) {
       <li className="list-item">
         <div className='info-container'>
           <TickIcon />
-          <p className="task-title">{task.title} {task.progress} {task.date}</p>
-          <ProgressBar />
+          <p className="task-title">{task.title} {task.date}</p>
+          <ProgressBar progress={task.progress}/>
         </div>
 
         <div className='button-container'>
           <button className='edit' onClick={()=>setShowModal(true)}>EDIT</button>
           <button className='delete' onClick={deleteTodo}>DELETE</button>
         </div>
-        {showModal && <Modal mode={'edit'} setShowModal={setShowModal} task={task} getData={getData}/>}
+        {showModal && <Modal mode={'edit'} setShowModal={setShowModal} getData={getData} task={task} />}
       </li>
     );
   }

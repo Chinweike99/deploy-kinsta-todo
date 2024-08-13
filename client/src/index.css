@@ -124,6 +124,9 @@ body{
     color: rgb(255, 255, 255);
     background-color: rgb(141, 181, 145);
 }
+.task-title{
+    width: 300px;
+}
 
 
 
@@ -227,4 +230,17 @@ input{
     font-weight: 700;
     transition: all ease 1s;
     /* background-color: rgb(74, 165, 135); */
+}
+
+/* PROGRESS BAR */
+.outer-bar{
+    width: 200px;
+    height: 14px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 7px;
+    overflow: hidden;
+}
+.inner-bar{
+    height: 14px;
+
 }

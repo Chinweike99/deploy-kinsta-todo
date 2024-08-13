@@ -12,9 +12,9 @@ function Auth() {
 console.log(email, password, confirmPwd);
 console.log(cookies)
 
-  const viewLogin = (e) => {
+  const viewLogin = (status) => {
     setError(null);
-    setIsLogin(e)
+    setIsLogin(status)
   }
 
   const handleSubmit = async (e, endpoint) =>{
@@ -30,7 +30,6 @@ console.log(cookies)
     });
     const data = response.json();
 
-    console.log(data);
     if(data.detail){
       setError(data.detail);
     }else{
@@ -51,12 +50,16 @@ console.log(cookies)
 
               <h1>{isLogin ? "Login" : "Sign up"}</h1>
               <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} required/>
-              <input type="password" placeholder="Password" onChange={(e) => setPassword (e.target.value)}/>
+
+              <input type="password" placeholder="Password" onChange={(e) => setPassword (e.target.value)}
+              />
+
               {!isLogin && <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPwd(e.target.value)}/>}
 
               <input type="submit" className="create" onClick={(e) => handleSubmit(e, isLogin ? "login" : "signup")}/>
               {error && <p>{error}</p>}
             </form>
+            
             <div className="auth-option">
               <button onClick={() => viewLogin(false)} style={{backgroundColor : !isLogin ? "white" : "rgb(74, 165, 135)", color: !isLogin ? "#333" : "white"}}>Sign Up</button>
               <button onClick={() => viewLogin(true)} style={{backgroundColor : isLogin ? "white" : "rgb(74, 165, 135)", color: !isLogin ? "white" : "#333"}}>Login</button>

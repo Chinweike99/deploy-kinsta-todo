@@ -12,17 +12,6 @@ function Modal({mode, setShowModal, getData, task}) {
     progress: editMode ? task.progress : "50",
     date: editMode ? task.date : new Date()
   })
-  const handleChange = (e) => {
-    console.log("Changing", e);
-    const {name, value} = e.target;
-
-    setData(data => ({
-      ...data,
-      [name] : value
-    }))
-
-    console.log(data);
-  }
  
   const postData = async (e) => {
     e.preventDefault();
@@ -61,6 +50,17 @@ function Modal({mode, setShowModal, getData, task}) {
     }
   }
 
+  const handleChange = (e) => {
+    console.log("Changing", e);
+    const {name, value} = e.target;
+
+    setData(data => ({
+      ...data,
+      [name] : value
+    }))
+
+    console.log(data);
+  }
 
     return (
       <div className="overlay">
