@@ -1,11 +1,16 @@
 import { useState } from "react";
+import {useCookies} from "react-cookie"
 
 function Auth() {
+  const [cookies, setCookie, removeCookie] = useCookies(null)
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPwd, setConfirmPwd] = useState(null);
+
+console.log(email, password, confirmPwd);
+console.log(cookies)
 
   const viewLogin = (e) => {
     setError(null);
@@ -17,7 +22,22 @@ function Auth() {
     if(!isLogin && password !== confirmPwd){
       return setError("Error")
     }
-    await fetch(`${process.env.REACT_APP_SEVERURL}/${endpoint}`)
+      const response = await fetch(`${process.env.REACT_APP_SEVERURL}/${endpoint}`,{
+      method: "POST",
+      headers: { "Content-Type" : "application/json"},
+      body: JSON.stringify({email, password})
+    });
+    const data = response.json();
+
+    console.log(data);
+    if(data.detail){
+      setError(data.detail);
+    }else{
+      setCookie('Email', data.email)
+      setCookie('AuthToken', data.token);
+
+      window.location.reload();
+    }
   }
 
 
@@ -27,10 +47,12 @@ function Auth() {
       <div className="auth-container">
         <div className="auth-box">
             <form action="auth" className="auth-form">
+
               <h1>{isLogin ? "Login" : "Sign up"}</h1>
-              <input type="email" placeholder="Email address"/>
-              <input type="password" placeholder="Password"/>
-              {!isLogin && <input type="password" placeholder="Confirm Password"/>}
+              <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)}/>
+              <input type="password" placeholder="Password" onChange={(e) => setPassword (e.target.value)}/>
+              {!isLogin && <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPwd(e.target.value)}/>}
+
               <input type="submit" className="create" onClick={(e) => handleSubmit(e, isLogin ? "login" : "signup")}/>
               {error && <p>{error}</p>}
             </form>
