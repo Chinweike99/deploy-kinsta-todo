@@ -20,7 +20,8 @@ console.log(cookies)
   const handleSubmit = async (e, endpoint) =>{
     e.preventDefault();
     if(!isLogin && password !== confirmPwd){
-      return setError("Error")
+      setError("Error, password does not match")
+      return
     }
       const response = await fetch(`${process.env.REACT_APP_SEVERURL}/${endpoint}`,{
       method: "POST",
@@ -49,7 +50,7 @@ console.log(cookies)
             <form action="auth" className="auth-form">
 
               <h1>{isLogin ? "Login" : "Sign up"}</h1>
-              <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)}/>
+              <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} required/>
               <input type="password" placeholder="Password" onChange={(e) => setPassword (e.target.value)}/>
               {!isLogin && <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPwd(e.target.value)}/>}
 

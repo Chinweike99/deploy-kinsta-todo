@@ -4,6 +4,7 @@ const db = require('./db');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+// const { pg } = require('pg');
 
 app.use(cors());
 app.use(express.json())
@@ -78,7 +79,17 @@ app.post('/signup', async(req, res) => {
 app.post('/login', async(req, res) => {
     const {email, password} = req.body;
     try {
-        
+        const users = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+        if(!users.rows.length) return res.json({detail: "User not found, Create user"});
+        const success = await bcrypt.compare(password, users.rows[0].h_password)
+        const token = jwt.sign({email}, 'secret', {expiresIn: "1hr"})
+
+        if(success){
+            res.json({'email' : users.rows[0].email, token})
+        }else{
+            res.json({detail: "Login Failed"})
+        }
+
     } catch (error) {
         console.error(error.message)
     }

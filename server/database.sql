@@ -1,5 +1,6 @@
 CREATE DATABASE todoapp;
 
+DROP TABLE IF EXISTS users, todos; 
 CREATE TABLE todos(
     id SERIAL PRIMARY KEY,
     user_email VARCHAR(100),
@@ -9,7 +10,7 @@ CREATE TABLE todos(
 );
 
 CREATE TABLE users(
-    email VARCHAR(100) PRIMARY KEY,
+    email VARCHAR(100) PRIMARY KEY UNIQUE,
     h_password VARCHAR(255)
 );
 

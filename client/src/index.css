@@ -66,6 +66,18 @@ body{
     background-color: rgb(108, 115, 148);
     color: rgb(255, 255, 255);
 }
+.copy-right{
+    font-size: 13px;
+    margin-top: 10px;
+    color: rgb(114, 114, 114);
+}
+.user-email{
+    float: right;
+    font-size: 13px;
+    margin-top: 10px;
+    color: rgb(114, 114, 114);
+}
+
 
 
 /* LIST ITEM */
