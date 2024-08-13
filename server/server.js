@@ -25,7 +25,6 @@ app.get('/todos/:userEmail', async (req, res) => {
 // CREATE NEW TODO
 app.post('/todos', async(req, res) =>{
     const { user_email, title, progress, date } = req.body;
-
     try {
         const response = await db.query(`INSERT INTO todos(user_email, title, progress, date) VALUES ($1, $2, $3, $4)`, [user_email, title, progress, date]);
         res.json(response);
@@ -62,6 +61,8 @@ app.post('/signup', async(req, res) => {
     const {email, password} = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hashedPwd = bcrypt.hashSync(password, salt)
+    
+    
     try {
         const signUp = await db.query("INSERT INTO users (email, h_password) VALUES($1, $2)", [email, hashedPwd]);
         const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'});
@@ -87,7 +88,7 @@ app.post('/login', async(req, res) => {
         if(success){
             res.json({'email' : users.rows[0].email, token})
         }else{
-            res.json({detail: "Login Failed"})
+            res.json({detail: "Email or password is incorrect"})
         }
 
     } catch (error) {

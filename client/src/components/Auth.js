@@ -19,6 +19,14 @@ console.log(cookies)
 
   const handleSubmit = async (e, endpoint) =>{
     e.preventDefault();
+
+    // const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    
+    // if (!emailPattern.test(email)) {
+    //     setError("Please enter a valid email address.");
+    //     return;
+    // }
+
     if(!isLogin && password !== confirmPwd){
       setError("Error, password does not match")
       return
@@ -46,14 +54,14 @@ console.log(cookies)
 
 
 
-
     return (
       <div className="auth-container">
         <div className="auth-box">
-            <form action="auth" className="auth-form">
+            <form action="auth" className="auth-form" noValidate>
 
               <h1>{isLogin ? "Login" : "Sign up"}</h1>
-              <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} required/>
+              <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} required 
+              />
 
               <input type="password" placeholder="Password" onChange={(e) => setPassword (e.target.value)}
               />
