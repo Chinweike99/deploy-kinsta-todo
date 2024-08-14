@@ -13,12 +13,7 @@ function Auth() {
 console.log(email, password, confirmPwd);
 console.log(cookies)
 
-  // Define the Yup validation schema for the email
-  // const emailSchema = Yup.string()
-  //   .email("Invalid email address")
-  //   .required("Email is required");
-
-  // Create a Yup schema for validation
+// Define the Yup validation schema for the email
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
