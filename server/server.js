@@ -61,8 +61,6 @@ app.post('/signup', async(req, res) => {
     const {email, password} = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hashedPwd = bcrypt.hashSync(password, salt)
-    
-    
     try {
         const signUp = await db.query("INSERT INTO users (email, h_password) VALUES($1, $2)", [email, hashedPwd]);
         const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'});
@@ -71,7 +69,7 @@ app.post('/signup', async(req, res) => {
         console.error(error);
         if(error){
             res.json({detail: error.detail})
-        }
+        }s
     }
 })
 
