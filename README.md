@@ -9,17 +9,15 @@ This is a simple Todo List application built with React on the frontend, Node.js
 
 ## Technologies Used
 
-- **Frontend:** React, CSS
+- **Frontend:** HTML, React, CSS
 - **Backend:** Node.js, Express.js
-- **Database:** PostgreSQL
+- **Database:** PostgreSQL (psql)
 - **Authentication:** JWT (JSON Web Tokens), bcrypt for password hashing
 
 ## Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/todo-list-app.git
-    cd todo-list-app
     ```
 
 2. Install the necessary dependencies:
