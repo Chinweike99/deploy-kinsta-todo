@@ -69,7 +69,7 @@ app.post('/signup', async(req, res) => {
         console.error(error);
         if(error){
             res.json({detail: error.detail})
-        }s
+        }
     }
 })
 
